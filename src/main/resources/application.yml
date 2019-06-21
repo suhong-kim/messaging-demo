@@ -1,0 +1,31 @@
+cloud:
+  aws:
+    credentials:
+      access-key: ${aws-access-key}
+      secret-key: ${aws-secret-key}
+    stack:
+      auto: false
+    region:
+      static: ap-northeast-2
+
+
+sqs:
+  mock:
+    enabled: false
+  queues:
+    - name: ${sqs-event.demo-event-name}
+    - name: ${sqs-event.demo-event-name-dead}
+
+sqs-event:
+  demo-event-name: baeminmarket-test
+  demo-event-name-dead: baeminmarket-test-dead
+
+
+sns.demo.arn: ${demo-arn}
+
+---
+spring.profiles: mock
+
+sqs:
+  mock:
+    enabled: true
